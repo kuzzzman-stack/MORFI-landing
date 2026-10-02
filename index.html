@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MORFI — el sistema de pedidos de tu restaurante. Carta QR, cocina en vivo, caja e impresión. Todo en tu salón." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <title>MORFI — Sistema de pedidos para restaurantes</title>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header id="nav">
+    <div class="nav-inner">
+      <button class="nav-logo" onclick="navToggle()" aria-label="Abrir menú">
+        <img class="lid" src="assets/logo-top.png" alt="" />
+        <img class="base" src="assets/logo-bottom.png" alt="" />
+      </button>
+      <nav class="nav-links">
+        <a href="#inicio" onclick="navClose()">Inicio</a>
+        <a href="#sistema" onclick="navClose()">Sistema</a>
+        <a href="#planes" onclick="navClose()">Planes</a>
+        <a href="#contacto" onclick="navClose()">Contacto</a>
+      </nav>
+    </div>
+    <div class="nav-drop">
+      <a href="#inicio" onclick="navClose()">Inicio</a>
+      <a href="#sistema" onclick="navClose()">Sistema</a>
+      <a href="#planes" onclick="navClose()">Planes</a>
+      <a href="#contacto" onclick="navClose()">Contacto</a>
+    </div>
+  </header>
+
+  <!-- ============ INICIO ============ -->
+  <section id="inicio">
+    <div class="hero">
+      <div class="logo-anim" aria-hidden="true">
+        <img class="base" src="assets/logo-bottom.png" alt="" />
+        <img class="logo-food" id="logo-food" src="assets/food/torta.png" alt="" />
+        <div class="logo-shine"></div>
+        <img class="lid" src="assets/logo-top.png" alt="" />
+      </div>
+      <h1 class="brand">MO<span class="r">R</span>FI</h1>
+      <p class="slogan" id="slogan"></p>
+      <p class="desc" id="desc"></p>
+    </div>
+
+    <!-- Demo -->
+    <div class="demo-wrap" id="demo">
+      <p class="demo-note" id="demo-nota"></p>
+      <div class="telefonos" id="telefonos"></div>
+      <p class="tel-info" id="tel-info"></p>
+
+      <div class="demo-grid">
+        <!-- Teléfono: carta del comensal -->
+        <div class="phone-col">
+          <p class="demo-label">Vista del comensal</p>
+          <div class="phone">
+            <div class="phone-cam cam-isla" id="phone-cam"></div>
+            <div class="phone-screen" id="phone-screen">
+              <div id="carta-screen"></div>
+            </div>
+            <div class="phone-home"></div>
+          </div>
+        </div>
+
+        <!-- Monitor: paneles del restaurante -->
+        <div class="monitor-col">
+          <div class="monitor-toolbar">
+            <p class="demo-label">Paneles del restaurante</p>
+            <button class="monitor-reset" onclick="resetDemo()">Reiniciar demo</button>
+          </div>
+          <div class="monitor-outer">
+            <div class="monitor">
+              <div class="monitor-screen" id="panel-body"></div>
+              <div class="monitor-chin"></div>
+              <div class="monitor-stand"></div>
+              <div class="monitor-base"></div>
+            </div>
+          </div>
+          <p class="monitor-hint">Deslizá horizontalmente para recorrer el monitor completo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SISTEMA ============ -->
+  <section id="sistema">
+    <div class="container">
+      <p class="kicker">El sistema</p>
+      <h2 class="title">Del QR a la cuenta, sin fricción</h2>
+      <div class="steps" id="steps"></div>
+
+      <div class="duo">
+        <div>
+          <h3 class="subtitle">Qué incluye</h3>
+          <ul class="ticks" id="incluye"></ul>
+        </div>
+        <div class="beneficios">
+          <h3 class="subtitle">Por qué funciona</h3>
+          <ul class="ticks green" id="beneficios"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLANES ============ -->
+  <section id="planes">
+    <div class="container">
+      <div class="planes-head">
+        <div>
+          <p class="kicker light">Planes</p>
+          <h2 class="title light">Costos claros, sin sorpresas</h2>
+        </div>
+        <div class="moneda" role="group" aria-label="Moneda">
+          <span id="sw-usd" class="sw-label on">USD</span>
+          <button class="sw" aria-label="Cambiar moneda"
+                  onclick="setMoneda(MONEDA==='USD'?'UYU':'USD')">
+            <span class="sw-knob" id="sw-knob"></span>
+          </button>
+          <span id="sw-uyu" class="sw-label">UYU</span>
+        </div>
+      </div>
+
+      <div class="plans" id="plans-grid"></div>
+      <p class="plans-note" id="plans-note"></p>
+
+      <a class="contrato" href="assets/contrato-morfi.pdf" download>
+        Descargar contrato de servicio (PDF)
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="contacto">
+    <div class="container center">
+      <h2 class="title">Hablemos de tu restaurante</h2>
+      <p class="sub">Contanos cómo trabaja tu salón y te mostramos MORFI funcionando en tu propio contexto.</p>
+      <button class="mail-cta" onclick="toggleMail()">Escribinos por correo</button>
+      <div class="mail-box" id="mail-box"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-marquee" aria-label="Redes sociales">
+      <div class="social-track" id="social-track"></div>
+    </div>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* textos inyectados desde CONTENT */
+    document.getElementById('slogan').textContent = CONTENT.slogan;
+    document.getElementById('desc').textContent = CONTENT.descripcion;
+    document.getElementById('demo-nota').textContent = CONTENT.demoNota;
+    document.getElementById('plans-note').textContent = CONTENT.moneda.nota;
+    document.getElementById('steps').innerHTML = CONTENT.pasos
+      .map((p, i) => `<div class="step"><span>${i + 1}</span><h3>${p.titulo}</h3><p>${p.texto}</p></div>`)
+      .join('');
+    document.getElementById('incluye').innerHTML = CONTENT.incluye
+      .map((f) => `<li>${f}</li>`)
+      .join('');
+    document.getElementById('beneficios').innerHTML = CONTENT.beneficios
+      .map((f) => `<li>${f}</li>`)
+      .join('');
+  </script>
+</body>
+</html>
